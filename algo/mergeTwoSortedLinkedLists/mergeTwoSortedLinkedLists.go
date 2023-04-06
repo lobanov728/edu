@@ -70,61 +70,48 @@ func main() {
 		},
 	}
 
-	fmt.Println(mergeTwoLists(&list1, &list2))
+	res := mergeTwoLists(&list1, &list2)
+	for res != nil {
+		fmt.Println(res.Val)
+		res = res.Next
+	}
 }
 
-var prev *ListNode
-var head *ListNode
-
 func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
-	prev = nil
-	head = nil
+	tmp := new(ListNode)
 	i := 0
-	for list1 != nil || list2 != nil {
+	for node := tmp; list1 != nil || list2 != nil; node = node.Next {
 		i++
 		if list1 == nil {
-			appendToResult(list2)
+			node.Next = &ListNode{Val: list2.Val}
 			list2 = list2.Next
 			continue
 		}
 		if list2 == nil {
-			appendToResult(list1)
+			node.Next = &ListNode{Val: list1.Val}
 			list1 = list1.Next
 			continue
 		}
 		if list1.Val == list2.Val {
-			appendToResult(list1)
-			appendToResult(list2)
+			node.Next = &ListNode{Val: list2.Val}
+			node = node.Next
+			node.Next = &ListNode{Val: list1.Val}
 			list1 = list1.Next
 			list2 = list2.Next
 			continue
 		}
 		if list1.Val < list2.Val {
-			appendToResult(list1)
+			node.Next = &ListNode{Val: list1.Val}
 			list1 = list1.Next
 			continue
 		}
 		if list1.Val > list2.Val {
-			appendToResult(list2)
+			node.Next = &ListNode{Val: list2.Val}
 			list2 = list2.Next
 			continue
 		}
 
 	}
 
-	return head
-}
-
-func appendToResult(list *ListNode) {
-	if head == nil {
-		head = new(ListNode)
-		head.Val = list.Val
-		prev = head
-		return
-	}
-
-	tmp := new(ListNode)
-	*tmp = *list
-	prev.Next = tmp
-	prev = tmp
+	return tmp.Next
 }

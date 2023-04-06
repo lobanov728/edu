@@ -1,0 +1,31 @@
+package binarytree
+
+import (
+	"log"
+	"testing"
+)
+
+func TestPreOrder(t *testing.T) {
+	// result F B A O D C E G I H
+	result := preOrderBinaryTreeTraverse(TreeString)
+	log.Println(result)
+}
+
+func preOrderBinaryTreeTraverse(node *TreeNode) (result []string) {
+	stack := make([]*TreeNode, 0, 100)
+
+	for node != nil || len(stack) > 0 {
+		if node != nil {
+			result = append(result, node.Val)
+			stack = append(stack, node)
+			node = node.Left
+		} else {
+			end := len(stack) - 1
+			node = stack[end]
+			stack = stack[:end]
+			node = node.Right
+		}
+	}
+
+	return
+}

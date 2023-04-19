@@ -40,7 +40,7 @@ func inorderTraversal(root *TreeNodeInt) []int {
 		} else {
 			root = stack[len(stack)-1]
 			stack = stack[0 : len(stack)-1]
-			res = append(res, root.Val)
+			res = append(res, root.Val) // visit node
 			root = root.Right
 		}
 	}

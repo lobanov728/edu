@@ -26,7 +26,7 @@ func MyAtoi(s string) int {
 		//if ch > 9 {
 		//	return 0, &NumError{fnAtoi, s0, ErrSyntax}
 		//}
-		//n = n*10 + int(ch)
+		n = n*10 + int(ch)
 	}
 	return n
 	//i, err := strconv.Atoi(s)
@@ -41,5 +41,5 @@ func MyAtoi(s string) int {
 
 func main() {
 	fmt.Println("String to integer casting")
-
+	fmt.Println(MyAtoi("-1233"))
 }

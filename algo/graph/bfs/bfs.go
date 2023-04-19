@@ -34,8 +34,8 @@ func bfs(startNode int, searchNode int, graph map[int][]int) bool {
 	searchQueue = graph[startNode]
 	for len(searchQueue) > 0 {
 		node := searchQueue[0]
-
 		searchQueue = searchQueue[1:]
+
 		if !inArray(node, visited) {
 			fmt.Println(node)
 			if node == searchNode {

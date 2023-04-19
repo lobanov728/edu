@@ -19,6 +19,7 @@ func main() {
 		log.Fatalf("wrong")
 	}
 }
+
 func longestCommonPrefix(strs []string) string {
 	prefixes := make(map[string]int, 200)
 

@@ -71,6 +71,7 @@ func inArray(node int, visited []int) bool {
 func dfsIterative(startNode int, searchNode int, graph map[int][]int) bool {
 	stack := make([]int, 0, 100)
 	stack = append(stack, startNode)
+
 	visited := make([]int, 25)
 
 	for len(stack) > 0 {

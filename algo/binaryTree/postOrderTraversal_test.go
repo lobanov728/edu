@@ -25,15 +25,15 @@ func postOrderBinaryTreeTraverse(node *TreeNode) (result []string) {
 			stack = append(stack, node)
 			node = node.Left
 		} else {
-			end := len(stack) - 1
-			peekNode := stack[end]
+			topOfStack := len(stack) - 1
+			peekNode := stack[topOfStack]
 
 			if peekNode.Right != nil && lastNodeVisited != peekNode.Right {
 				node = peekNode.Right
 			} else {
 				result = append(result, peekNode.Val)
 				lastNodeVisited = peekNode
-				stack = stack[:end]
+				stack = stack[:topOfStack] // pop element
 			}
 		}
 	}

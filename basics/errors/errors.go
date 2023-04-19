@@ -10,15 +10,13 @@ func (e MyError) Error() string {
 }
 
 func main() {
-
-	fmt.Println("returnError", returnError() == nil)             // true
-	fmt.Println("returnErrorPtr1", returnErrorPtr1() == nil)     // true
-	fmt.Println("returnErrorPtr2", returnErrorPtr2() == nil)     // false
-	fmt.Println("returnMyError", returnMyError() == nil)         // false
-	fmt.Println("returnMyErrorPtr1", returnMyErrorPtr1() == nil) // false
-	fmt.Println("returnMyErrorPtr2", returnMyErrorPtr2() == nil) // false
+	fmt.Println("returnError", returnError() == nil)                            // true
+	fmt.Println("returnErrorPtr1", returnErrorPtr1(), returnErrorPtr1() == nil) // true
+	fmt.Println("returnErrorPtr2", returnErrorPtr2(), returnErrorPtr2() == nil) // false
+	fmt.Println("returnMyError", returnMyError() == nil)                        // false
+	fmt.Println("returnMyErrorPtr1", returnMyErrorPtr1() == nil)                // false
+	fmt.Println("returnMyErrorPtr2", returnMyErrorPtr2() == nil)                // false
 	fmt.Println("work", work() == nil)
-
 }
 
 func returnError() error {

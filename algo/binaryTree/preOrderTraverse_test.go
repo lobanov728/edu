@@ -20,9 +20,9 @@ func preOrderBinaryTreeTraverse(node *TreeNode) (result []string) {
 			stack = append(stack, node)
 			node = node.Left
 		} else {
-			end := len(stack) - 1
-			node = stack[end]
-			stack = stack[:end]
+			topOfStack := len(stack) - 1
+			node = stack[topOfStack]
+			stack = stack[:topOfStack]
 			node = node.Right
 		}
 	}
